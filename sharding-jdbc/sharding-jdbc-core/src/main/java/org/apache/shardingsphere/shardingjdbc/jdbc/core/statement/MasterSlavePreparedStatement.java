@@ -46,11 +46,11 @@ public final class MasterSlavePreparedStatement extends AbstractMasterSlavePrepa
     private final Collection<PreparedStatement> routedStatements = new LinkedList<>();
     
     public MasterSlavePreparedStatement(final MasterSlaveConnection connection, final String sql) throws SQLException {
-        this(connection, sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY, ResultSet.HOLD_CURSORS_OVER_COMMIT);
+        this(connection, sql, ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY, ResultSet.CLOSE_CURSORS_AT_COMMIT);
     }
     
     public MasterSlavePreparedStatement(final MasterSlaveConnection connection, final String sql, final int resultSetType, final int resultSetConcurrency) throws SQLException {
-        this(connection, sql, resultSetType, resultSetConcurrency, ResultSet.HOLD_CURSORS_OVER_COMMIT);
+        this(connection, sql, resultSetType, resultSetConcurrency, ResultSet.CLOSE_CURSORS_AT_COMMIT);
     }
     
     public MasterSlavePreparedStatement(

@@ -41,7 +41,8 @@ public final class MasterSlaveDataSourceRouter {
      */
     public String route(final SQLStatement sqlStatement) {
         if (isMasterRoute(sqlStatement)) {
-            MasterVisitedManager.setMasterVisited();
+            // The master node Ignite in this case doesn't contain all the data but only 5 min, so we need to read Snowball.
+            // MasterVisitedManager.setMasterVisited();
             return masterSlaveRule.getMasterDataSourceName();
         }
         return masterSlaveRule.getLoadBalanceAlgorithm().getDataSource(
